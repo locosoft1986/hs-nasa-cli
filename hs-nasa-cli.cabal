@@ -1,0 +1,55 @@
+-- This file has been generated from package.yaml by hpack version 0.28.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 2f09d3a2129ce0b271d7de232b2151705f8a8c38473e8ca683ebce42fb0a1104
+
+name:           hs-nasa-cli
+version:        0.1.0
+category:       Network
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+extra-source-files:
+    .gitignore
+    README.md
+
+library
+  exposed-modules:
+      System.Console.Questioner
+      System.Console.Questioner.ProgressIndicators
+      System.Console.Questioner.Util
+  other-modules:
+      Paths_hs_nasa_cli
+  hs-source-dirs:
+      src
+  ghc-options: -Wall
+  build-depends:
+      ansi-terminal
+    , base
+    , bytestring
+    , stm
+    , terminal-size
+    , vty
+  default-language: Haskell2010
+
+executable hs-nasa-cli
+  main-is: Main.hs
+  other-modules:
+      Paths_hs_nasa_cli
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      HandsomeSoup
+    , base
+    , bytestring
+    , chalk
+    , connection
+    , containers
+    , hs-nasa-cli
+    , http-conduit
+    , http-types
+    , hxt
+    , transformers
+  default-language: Haskell2010

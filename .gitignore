@@ -1,0 +1,5 @@
+dist
+dist/**/*
+*.jpg
+.stack-work
+.stack-work/**/*

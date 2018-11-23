@@ -1,0 +1,44 @@
+name: hs-nasa-cli
+version: 0.1.0
+category: Network
+
+ghc-options: -Wall
+
+extra-source-files:
+  - .gitignore
+  - README.md
+
+dependencies:
+  - base
+  - bytestring
+
+
+library:
+  source-dirs:
+    - src
+  exposed-modules:
+    - System.Console.Questioner
+    - System.Console.Questioner.ProgressIndicators
+    - System.Console.Questioner.Util
+  dependencies:
+    - ansi-terminal
+    - vty
+    - stm
+    - terminal-size
+
+executable:
+  source-dirs: app
+  main: Main.hs
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  dependencies:
+    - connection
+    - chalk
+    - http-types
+    - http-conduit
+    - transformers
+    - containers
+    - hxt
+    - HandsomeSoup
+    - http-types
+    - http-conduit
+    - hs-nasa-cli
