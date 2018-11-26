@@ -12,6 +12,9 @@
 * Ensure your `$PATH` includes the default Stack directory
 * Run `hs-nasa-cli` with options
 
+
+For Mac x64 you can download hs-nasa-cli executable from "releases/mac_x64" directory.
+
 ## Usage
 
 ``` bash
