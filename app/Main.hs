@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 -- https://github.com/xxczaki/nasa-cli/blob/master/cli.js
-import Control.Concurrent
+import System.Environment (getArgs)
 import System.Console.Questioner
 import System.Console.Chalk
 import Control.Monad.IO.Class
@@ -54,6 +54,30 @@ logError = red "✖"
 logWarning :: String
 logWarning = yellow "⚠"
 
+messageInfo :: String
+messageInfo = cyan "❯"
+
+showHelpMessage :: IO ()
+showHelpMessage = do
+  putStrLn $ green "NASA CLI" ++ " - Download NASA Picture of the Day from your terminal!"
+  putStrLn $ "Usage: " ++ cyan "nasa " ++ magenta "<option>"
+  putStrLn "Options:"
+  putStrLn $ magenta "  -t " ++ magenta "--today" ++ "   Download Picture of the Day"
+  putStrLn $ magenta "  -d " ++ magenta "--date" ++ "    Download Picture of the Dat from the specific date"
+  putStrLn "Help:"
+  putStrLn $ magenta "  -h " ++ magenta "--help" ++ "    Show help message"
+  putStrLn $ magenta "  -e " ++ magenta "--example" ++ " Show example message"
+
+showExampleMessage :: IO ()
+showExampleMessage = do
+  putStrLn "Example:"
+  putStrLn "Download picture of:"
+  putStrLn $ messageInfo ++ " 24th December 2017 [24/12/17]"
+  putStrLn $ messageInfo ++ " 1st January 2000   [01/01/00]"
+  putStrLn $ "hs-nasa-cli --date " ++ green "17" ++ red "12" ++ blue "24"
+  putStrLn $ "hs-nasa-cli -d " ++ green "00" ++ red "01" ++ blue "01"
+  putStrLn "Date Format:  YYMMDD"
+
 defaultSpinner :: String -> IO ProgressIndicator
 defaultSpinner = spinner (SpinnerConfig dots1SpinnerTheme (Just cyan)) (1000 * 80)
 
@@ -99,16 +123,24 @@ fetchImage (img, title) = do
   putStr result
   putStrLn $ dim $ " [" ++ title ++ "]"
 
-fetchNasaImage :: IO ()
-fetchNasaImage = do
+fetchNasaImage :: String -> IO ()
+fetchNasaImage url = do
   s <- defaultSpinner " Hacking to NASA servers..."
-  img <- parseImageInfo "https://apod.nasa.gov/apod/ap181114.html"
+  img <- parseImageInfo url --"https://apod.nasa.gov/apod/ap181114.html"
   stopIndicator s
   maybe (putStrLn $ logInfo ++ " Today has no image :p") fetchImage img
 
 main :: IO ()
 main = do
-  putStrLn $ (red "red" ++ blue " blue" ++ yellow " yellow" ++ green " green" ++ cyan " cyan")
+  args <- getArgs
+  case args of
+    ["-t"] -> fetchNasaImage "https://apod.nasa.gov/apod/"
+    ["--today"] -> fetchNasaImage "https://apod.nasa.gov/apod/"
+    ["-d", date] -> fetchNasaImage $ "https://apod.nasa.gov/apod/ap" ++ date ++ ".html"
+    ["--date", date] -> fetchNasaImage $ "https://apod.nasa.gov/apod/ap" ++ date ++ ".html"
+    ["-e"] -> showExampleMessage
+    ["--example"] -> showExampleMessage
+    _ -> showHelpMessage
 
 
   --   cabal install maybet

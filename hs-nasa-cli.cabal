@@ -39,7 +39,7 @@ executable hs-nasa-cli
       Paths_hs_nasa_cli
   hs-source-dirs:
       app
-  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Wall -threaded
   build-depends:
       HandsomeSoup
     , base
