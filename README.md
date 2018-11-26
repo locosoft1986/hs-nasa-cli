@@ -17,17 +17,17 @@
 ``` bash
 # Download Picture of the Day
 
-$ nasa -t
+$ hs-nasa-cli -t
 
 # Download Picture of the Day from the specific date
 
-$ nasa -d YYMMDD
+$ hs-nasa-cli -d YYMMDD
 
 # Examples:
 
-$ nasa -t
+$ hs-nasa-cli -t
 
-$ nasa -d 171224
+$ hs-nasa-cli -d 171224
 ```
 
 ## How it works?
