@@ -40,7 +40,7 @@ It downloads the latest Picture of the Day (or from specific date) from [NASA AP
 
 
 ## Thanks:
-- [Original Node Js Nasa CLI](https://github.com/xxczaki/nasa-cli) for having a project to be practice with Haskell.
+- [Original Node Js Nasa CLI](https://github.com/xxczaki/nasa-cli) for having a project for me to practice with Haskell.
 - [Pedro Yamada](https://github.com/yamadapc/haskell-questioner) for terminal spinner, I have to modify a little bit to support colors for spinner animation.
 - [NASA APOD :rocket:](https://apod.nasa.gov/apod/) for providing marvelous space photos every day!
 
