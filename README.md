@@ -13,7 +13,7 @@
 * Run `hs-nasa-cli` with options
 
 
-For Mac x64 you can download hs-nasa-cli executable from "releases/mac_x64" directory.
+For Mac x64 you can download hs-nasa-cli executable from [Releases](https://github.com/locosoft1986/hs-nasa-cli/releases) page.
 
 ## Usage
 
