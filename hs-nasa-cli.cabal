@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 2f09d3a2129ce0b271d7de232b2151705f8a8c38473e8ca683ebce42fb0a1104
+-- hash: 2131128b2d5a18e39a919ab50a5b1b0854b3a53b8d13417e15cad315817f7cf0
 
 name:           hs-nasa-cli
 version:        0.1.0
@@ -16,7 +16,6 @@ extra-source-files:
 
 library
   exposed-modules:
-      System.Console.Questioner
       System.Console.Questioner.ProgressIndicators
       System.Console.Questioner.Util
   other-modules:
@@ -39,7 +38,7 @@ executable hs-nasa-cli
       Paths_hs_nasa_cli
   hs-source-dirs:
       app
-  ghc-options: -Wall -threaded
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       HandsomeSoup
     , base

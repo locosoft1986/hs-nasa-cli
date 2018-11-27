@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 -- https://github.com/xxczaki/nasa-cli/blob/master/cli.js
 import System.Environment (getArgs)
-import System.Console.Questioner
+import System.Console.Questioner.ProgressIndicators
 import System.Console.Chalk
 import Control.Monad.IO.Class
 import Control.Arrow ((>>>))

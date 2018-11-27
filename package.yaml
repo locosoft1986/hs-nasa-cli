@@ -17,7 +17,6 @@ library:
   source-dirs:
     - src
   exposed-modules:
-    - System.Console.Questioner
     - System.Console.Questioner.ProgressIndicators
     - System.Console.Questioner.Util
   dependencies:
@@ -29,7 +28,7 @@ library:
 executable:
   source-dirs: app
   main: Main.hs
-  ghc-options: -threaded
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
   dependencies:
     - connection
     - chalk
