@@ -79,7 +79,7 @@ showExampleMessage = do
   putStrLn "Date Format:  YYMMDD"
 
 defaultSpinner :: String -> IO ProgressIndicator
-defaultSpinner = spinner (SpinnerConfig dots1SpinnerTheme (Just cyan)) (1000 * 80)
+defaultSpinner = spinner (SpinnerConfig dots1SpinnerTheme cyan) (1000 * 80)
 
 extractInfo :: ResponseContent -> IO (Maybe (String, String))
 extractInfo content = do

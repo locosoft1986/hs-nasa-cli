@@ -68,7 +68,7 @@ type SpinnerColor = String -> String
 
 data SpinnerConfig = SpinnerConfig {
   _spinnerTheme :: SpinnerTheme,
-  _spinnerColor :: Maybe SpinnerColor
+  _spinnerColor :: SpinnerColor
 }
 
 spinner :: SpinnerConfig -> Int -> String -> IO ProgressIndicator
@@ -76,9 +76,7 @@ spinner config interval prompt = SpinnerIndicator <$> forkIO (setup $ loop 0)
   where
     setup = hWithBufferMode stdout NoBuffering
     theme = _spinnerTheme config
-    colorFn = case (_spinnerColor config) of
-                    Just fn -> fn
-                    Nothing -> id
+    colorFn = _spinnerColor config
     loop i = do
         clearLine
         setCursorColumn 0
@@ -113,15 +111,15 @@ simple6SpinnerTheme = "▌▄▐▀"
 simple7SpinnerTheme = "╫╪"
 simple8SpinnerTheme = "■□▪▫"
 simple9SpinnerTheme = "←↑→↓"
-simple1Spinner = spinner (SpinnerConfig simple1SpinnerTheme Nothing)
-simple2Spinner = spinner (SpinnerConfig simple2SpinnerTheme Nothing)
-simple3Spinner = spinner (SpinnerConfig simple3SpinnerTheme Nothing)
-simple4Spinner = spinner (SpinnerConfig simple4SpinnerTheme Nothing)
-simple5Spinner = spinner (SpinnerConfig simple5SpinnerTheme Nothing)
-simple6Spinner = spinner (SpinnerConfig simple6SpinnerTheme Nothing)
-simple7Spinner = spinner (SpinnerConfig simple7SpinnerTheme Nothing)
-simple8Spinner = spinner (SpinnerConfig simple8SpinnerTheme Nothing)
-simple9Spinner = spinner (SpinnerConfig simple9SpinnerTheme Nothing)
+simple1Spinner = spinner (SpinnerConfig simple1SpinnerTheme id)
+simple2Spinner = spinner (SpinnerConfig simple2SpinnerTheme id)
+simple3Spinner = spinner (SpinnerConfig simple3SpinnerTheme id)
+simple4Spinner = spinner (SpinnerConfig simple4SpinnerTheme id)
+simple5Spinner = spinner (SpinnerConfig simple5SpinnerTheme id)
+simple6Spinner = spinner (SpinnerConfig simple6SpinnerTheme id)
+simple7Spinner = spinner (SpinnerConfig simple7SpinnerTheme id)
+simple8Spinner = spinner (SpinnerConfig simple8SpinnerTheme id)
+simple9Spinner = spinner (SpinnerConfig simple9SpinnerTheme id)
 
 dots1SpinnerTheme = "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏"
 dots2SpinnerTheme = "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏"
@@ -130,13 +128,13 @@ dots4SpinnerTheme = "⠋⠙⠚⠒⠂⠂⠒⠲⠴⠦⠖⠒⠐⠐⠒⠓⠋"
 dots5SpinnerTheme = "⠁⠉⠙⠚⠒⠂⠂⠒⠲⠴⠤⠄⠄⠤⠴⠲⠒⠂⠂⠒⠚⠙⠉⠁"
 dots6SpinnerTheme = "⠈⠉⠋⠓⠒⠐⠐⠒⠖⠦⠤⠠⠠⠤⠦⠖⠒⠐⠐⠒⠓⠋⠉⠈"
 dots7SpinnerTheme = "⠁⠁⠉⠙⠚⠒⠂⠂⠒⠲⠴⠤⠄⠄⠤⠠⠠⠤⠦⠖⠒⠐⠐⠒⠓⠋⠉⠈⠈"
-dots1Spinner = spinner (SpinnerConfig dots1SpinnerTheme Nothing)
-dots2Spinner = spinner (SpinnerConfig dots2SpinnerTheme Nothing)
-dots3Spinner = spinner (SpinnerConfig dots3SpinnerTheme Nothing)
-dots4Spinner = spinner (SpinnerConfig dots4SpinnerTheme Nothing)
-dots5Spinner = spinner (SpinnerConfig dots5SpinnerTheme Nothing)
-dots6Spinner = spinner (SpinnerConfig dots6SpinnerTheme Nothing)
-dots7Spinner = spinner (SpinnerConfig dots7SpinnerTheme Nothing)
+dots1Spinner = spinner (SpinnerConfig dots1SpinnerTheme id)
+dots2Spinner = spinner (SpinnerConfig dots2SpinnerTheme id)
+dots3Spinner = spinner (SpinnerConfig dots3SpinnerTheme id)
+dots4Spinner = spinner (SpinnerConfig dots4SpinnerTheme id)
+dots5Spinner = spinner (SpinnerConfig dots5SpinnerTheme id)
+dots6Spinner = spinner (SpinnerConfig dots6SpinnerTheme id)
+dots7Spinner = spinner (SpinnerConfig dots7SpinnerTheme id)
 
 simpleProgressBarTheme :: ProgressBarTheme
 simpleProgressBarTheme = ProgressBarTheme $ \i -> do

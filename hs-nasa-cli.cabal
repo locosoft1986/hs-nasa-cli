@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 2131128b2d5a18e39a919ab50a5b1b0854b3a53b8d13417e15cad315817f7cf0
+-- hash: d0ca15ed2f0f5221a8a90c81eda59e3201e7dd9fbcbd61bbdf93c2f3d299e06b
 
 name:           hs-nasa-cli
 version:        0.1.0
@@ -38,7 +38,7 @@ executable hs-nasa-cli
       Paths_hs_nasa_cli
   hs-source-dirs:
       app
-  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Wall -threaded
   build-depends:
       HandsomeSoup
     , base
