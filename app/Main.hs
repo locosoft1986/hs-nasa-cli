@@ -25,7 +25,7 @@ checkNasaResponse rs = if (statusIsSuccessful . HS.getResponseStatus) rs
                    else Nothing
 
 handleException :: E.SomeException -> IO (Maybe ResponseString)
-handleException _ = return Nothing
+handleException = const.return $ Nothing
 
 contentFromUrl :: String -> IO (Maybe ResponseContent)
 contentFromUrl url = do
@@ -51,8 +51,8 @@ logSuccess = green "✔"
 logError :: String
 logError = red "✖"
 
-logWarning :: String
-logWarning = yellow "⚠"
+-- logWarning :: String
+-- logWarning = yellow "⚠"
 
 messageInfo :: String
 messageInfo = cyan "❯"

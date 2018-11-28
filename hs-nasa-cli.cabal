@@ -2,10 +2,10 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: d0ca15ed2f0f5221a8a90c81eda59e3201e7dd9fbcbd61bbdf93c2f3d299e06b
+-- hash: 4f64f03f91057197035826eb1db99e404246b4fb820ce34d92c479380983af50
 
 name:           hs-nasa-cli
-version:        0.1.0
+version:        0.1.1
 category:       Network
 license-file:   LICENSE
 build-type:     Simple
